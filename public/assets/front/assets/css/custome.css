@@ -1,0 +1,149 @@
+.top-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.top-menu li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.top-menu li:last-child {
+    margin-right: 0;
+}
+
+.top-menu li a {
+    text-decoration: none;
+    border: 1px solid #9c011e;
+    padding: 5px;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    background-color: #9c011e;
+}
+.h-8 {
+    height: 2rem;
+}
+.header-top-bg{
+    background: #cf2948;
+    transition: all .3s;
+    height: 32px;
+}
+.py-7{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+}
+.logo-container img {
+    margin-right: 15px;
+}
+.logo-text {
+    font-size: 4.25rem;
+    line-height: 2.2rem;
+    font-weight: 600;
+    color: #CF2948;
+}
+.header-2 .header-search-extended .form-control::placeholder {
+    color: #000000;
+    font-weight: bolder;
+}
+.btn-offer-bg{
+    background: linear-gradient(90deg,#5d88ff,#a5baf1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    color: #000000;
+    padding: 0rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    padding: 8px 16px;
+    font-size: 18px;
+}
+
+.btn-offer-bg:hover{
+    background: linear-gradient(270deg,#5d88ff,#a5baf1);
+}
+.header-intro-clearance div.icon i{
+    font-size: 21px;
+}
+
+.wishlist-container{
+    display: flex;
+}
+.header-intro-clearance .header-bottom .menu>li>a i{
+    margin-left: 8px;
+}
+.menu ul li ul{
+    border-top: none;
+    border-radius: 5px;
+}
+.menu ul li:hover{
+    background: #fff;
+}
+.menu ul li{
+    padding: 6px 0;
+}
+.owl-simple.owl-light.owl-nav-inside .owl-dots .owl-dot.active span{
+    width: 100px;
+    background-color: #6287ec !important;
+    opacity: 1;
+    border-color: #6287ec;
+}
+.owl-simple.owl-light.owl-nav-inside .owl-dots .owl-dot span{
+    width: 30px;
+    background-color: #e5e7eb !important;
+    border-color: #e5e7eb;
+    opacity: 1;
+}
+.owl-simple.owl-light.owl-nav-inside .owl-dots .owl-dot span:hoveer{
+    background-color: #ffffff !important;
+    border-color: #ffffff;
+}
+.owl-simple.owl-light .owl-nav [class*='owl-']:focus{
+    outline: none;
+    color: #6287ec;
+}
+.owl-simple.owl-light .owl-nav [class*='owl-']:hover{
+    outline: none;
+    color: #6287ec;
+}
+.btn-login{
+    width: 100%;
+    background: rgb(98, 135, 236);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn-login:hover{
+    background: rgb(98, 135, 236);
+    color: white;
+}
+.btn-social-login{
+    border: 1px solid #838383;
+    border-radius: 5px;
+    width: 100%;
+}
+.btn-social-login img{
+    width: 30px;
+    margin-right: 22px;
+}
+@media screen and (max-width: 768px) {
+    .wishlist-container{
+        display: none;
+    }
+    .logo-container{
+        height: 30px;
+        width: 30px;
+    }
+    .logo-container img {
+        margin-right: 5px;
+    }
+    .logo-text{
+        font-size: 24px;
+    }
+}
