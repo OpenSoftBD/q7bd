@@ -43,6 +43,24 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('category.index') }}" class="nav-link">
+            <i class="fa-solid fa-layer-group"></i>
+              <p>
+                Categories
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('sub-category.index') }}" class="nav-link">
+            <i class="fa-solid fa-layer-group"></i>
+              <p>
+                Sub Categories
+              </p>
+            </a>
+          </li>
+
 
           <li class="nav-header">MULTI LEVEL EXAMPLE</li>
           <li class="nav-item">

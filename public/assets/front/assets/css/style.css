@@ -3019,7 +3019,7 @@ p {
     font-weight: 300;
     font-family: 'Poppins';
     letter-spacing: 0;
-    color: #000000
+    color: #000000;
 }
 
 .header-2 {
@@ -3135,7 +3135,8 @@ p {
 }
 
 .header-2 .sticky-header {
-    background-color: #fff
+    background-color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .header-2 .mobile-menu-toggler {
@@ -3152,7 +3153,8 @@ p {
 }
 
 .header-2 .header-bottom {
-    color: #fff
+    color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .header-2 .header-bottom .main-nav {

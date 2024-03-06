@@ -104,11 +104,19 @@
                 </div>
 
                 <div class="account">
+                    @if (auth()->user() !== null)
+                    <a href="{{ route('user.dashboard') }}" title="My account">
+                        <div class="icon">
+                            <i class="fa-solid fa-circle-user"></i>
+                        </div>
+                    </a>
+                    @else
                     <a href="{{ route('user.login') }}" title="My account">
                         <div class="icon">
                             <i class="fa-solid fa-circle-user"></i>
                         </div>
                     </a>
+                    @endif
                 </div>
             </div>
             <!-- End .header-right -->

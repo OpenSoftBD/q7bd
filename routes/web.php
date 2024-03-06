@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/user/dashboard', [DashboardController::class, 'user'])->name('user.dashboard');
 });
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/login', [LoginController::class,'index'])->name('user.login');
+Route::get('/register', [LoginController::class,'register'])->name('user.register');

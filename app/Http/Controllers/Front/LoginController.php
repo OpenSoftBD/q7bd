@@ -11,4 +11,9 @@ class LoginController extends Controller
    {
     return view('front.login.index');
    }
+
+   public function register()
+   {
+    return view('front.login.register');
+   }
 }

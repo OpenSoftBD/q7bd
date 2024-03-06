@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
@@ -16,4 +17,6 @@
 <link rel="stylesheet" href="{{ asset('/') }}assets/backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 <!-- Daterange picker -->
 <link rel="stylesheet" href="{{ asset('/') }}assets/backend/plugins/daterangepicker/daterangepicker.css">
-<!-- summernote -->
+<!-- select2 -->
+<link rel="stylesheet" href="{{ asset('/') }}assets/backend/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="{{ asset('/') }}assets/backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
