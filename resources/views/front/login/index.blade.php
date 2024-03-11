@@ -38,7 +38,7 @@
                                     </a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="#" class="btn btn-social-login btn-g">
+                                    <a href="{{ route('google.redirect') }}" class="btn btn-social-login btn-g">
                                         <img src="{{ asset('/') }}assets/front/assets/image/google.png" alt="">
                                         Google
                                     </a>

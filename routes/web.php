@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SocialloginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Front\LoginController;
@@ -30,3 +31,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/login', [LoginController::class,'index'])->name('user.login');
 Route::get('/register', [LoginController::class,'register'])->name('user.register');
+
+Route::get('/google/redirect', [SocialloginController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/auth/google/callback', [SocialloginController::class, 'handleGoogleCallback'])->name('google.callback');
