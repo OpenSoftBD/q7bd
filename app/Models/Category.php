@@ -29,4 +29,19 @@ class Category extends Model
             ]
             );
     }
+
+    public function subcategories()
+    {
+        return $this->hasMany(Subcategory::class);
+    }
+
+    public function subsubcategories()
+    {
+        return $this->hasManyThrough(Subsubcategory::class, Subcategory::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

@@ -1,5 +1,9 @@
 @extends('admin.master')
 
+@section('title')
+    Sub Category
+@endsection
+
 @section('style')
 <!-- DataTables -->
 <link rel="stylesheet" href="{{ asset('/') }}assets/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -13,12 +17,11 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Add New Category</h1>
+          <h1>Add New Sub Category</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Categories</a></li>
-            <li class="breadcrumb-item active">Add Category</li>
+            <li class="breadcrumb-item active">Sub Categories</li>
           </ol>
         </div>
       </div>
@@ -31,7 +34,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header text-right">
-                <a href="{{ route('category.create') }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus mr-2"></i> Add New</a>
+                <a href="{{ route('sub-category.create') }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-plus mr-2"></i> Add New</a>
             </div>
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -40,28 +43,30 @@
                   <th>#ID</th>
                   <th>Image</th>
                   <th>Name</th>
+                  <th>Ctegoty Name</th>
                   <th>Total Product</th>
                   <th>Meta</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($subcategories as $subcategory)
                     <tr>
-                        <td>{{ $category->id }}</td>
+                        <td>{{ $subcategory->id }}</td>
                         <td>
-                            <img src="{{ asset($category->image) }}" alt="{{ $category->name }}" style="width: 50px; height: 50px;">
+                            <img src="{{ asset($subcategory->image) }}" alt="{{ $subcategory->name }}" style="width: 50px; height: 50px;">
                         </td>
-                        <td>{{ $category->name }}</td>
-                        <td>{{ $category->total_product }}</td>
-                        <td>{{ $category->meta_title }}</td>
+                        <td>{{ $subcategory->name }}</td>
+                        <td>{{ $subcategory->category->name }}</td>
+                        <td>{{ $subcategory->total_product }}</td>
+                        <td>{{ $subcategory->meta_title }}</td>
                         <td>
-                            <form action="{{ route('category.destroy', $category->id) }}" method="post">
+                            <form action="{{ route('sub-category.destroy', $subcategory->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 {{-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-xl"><i class="fa-solid fa-eye"></i>
                                   </button> --}}
-                                <a href="{{ route('category.edit', $category->id) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="{{ route('sub-category.edit', $subcategory->id) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <button type="submit" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
                             </form>
                         </td>

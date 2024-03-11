@@ -15,6 +15,40 @@
     .user-details{
         margin-top: 20px;
     }
+    .nav-dashboard {
+        display: flex;
+        margin-right: 10px;
+    }
+    .nav-dashboard .nav-link.active:before {
+        left: 0;
+        opacity: 0;
+    }
+    .nav-dashboard .nav-link.active{
+        color: #6287ec;
+        padding-left: 0px;
+    }
+
+    .nav-dashboard .nav-link:hover{
+        color: #6287ec;
+    }
+    .nav-dashboard .nav-link{
+        color: #000;
+        margin-right: 20px;
+        border-bottom: none;
+        font-size: 14px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .btn-outline-primary-2{
+        color: #6287ec;
+        border-color: #6287ec;
+    }
+
+    .btn-outline-primary-2:hover{
+        color: #fff;
+        background-color: #6287ec;
+        border-color: #6287ec;
+    }
 </style>
 @endsection
 
@@ -44,24 +78,25 @@
                 </div>
             </div>
             <div class="row">
-                <aside class="col-md-4 col-lg-3">
-                    <ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
+                <aside class="col-12 col-12">
+                    <ul class="nav nav-dashboard flex mb-3 mb-md-0" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="tab-dashboard-link" data-toggle="tab" href="#tab-dashboard" role="tab" aria-controls="tab-dashboard" aria-selected="true">Dashboard</a>
+                            <a class="nav-link active" id="tab-dashboard-link" data-toggle="tab" href="#tab-dashboard" role="tab" aria-controls="tab-dashboard" aria-selected="true">Wishlist</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="tab-orders-link" data-toggle="tab" href="#tab-orders" role="tab" aria-controls="tab-orders" aria-selected="false">Orders</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="tab-account-link" data-toggle="tab" href="#tab-account" role="tab" aria-controls="tab-account" aria-selected="false">Account Details</a>
+                            <a class="nav-link" id="tab-account-link" data-toggle="tab" href="#tab-account" role="tab" aria-controls="tab-account" aria-selected="false">Edit Profile</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sign Out</a>
+                            <a class="nav-link" id="tab-updatepass-link" data-toggle="tab" href="#tab-updatepass" role="tab" aria-controls="tab-updatepass" aria-selected="false">Update Password</a>
                         </li>
                     </ul>
-                </aside><!-- End .col-lg-3 -->
+                </aside>
 
-                <div class="col-md-8 col-lg-9">
+                <div class="col-12">
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-dashboard" role="tabpanel" aria-labelledby="tab-dashboard-link">
                             <p>Hello <span class="font-weight-normal text-dark">{{ $user->name }}</span>
@@ -75,41 +110,80 @@
                         </div><!-- .End .tab-pane -->
 
                         <div class="tab-pane fade" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
-                            <form action="#">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label>First Name *</label>
-                                        <input type="text" class="form-control" required>
-                                    </div><!-- End .col-sm-6 -->
+                            <form method="post" action="{{ route('profile.update') }}" class="row g-3">
+                                @csrf
+                                @method('patch')
+                                <div class="col-12">
+                                    <label class="form-label">Name</label>
+                                    <small class="text-danger">
+                                        @error('name')
+                                            {{ $message }}
+                                        @enderror
+                                    </small>
+                                    <input id="name" name="name" type="text" value="{{ $user->name }}" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Email address</label>
+                                    <small class="text-danger">
+                                        @error('email')
+                                            {{ $message }}
+                                        @enderror
+                                    </small>
+                                    <input id="email" name="email" type="email" class="form-control" value="{{ $user->email }}">
+                                </div>
+                                @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+                                    <p>Your email address is unverified.</p>
+                                    <button form="send-verification" class="btn btn-primary">Click here to re-send the verification email.</button>
+                                    @if (session('status') === 'verification-link-sent')
+                                        <p class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
+                                            {{ __('A new verification link has been sent to your email address.') }}
+                                        </p>
+                                    @endif
+                                @endif
 
-                                    <div class="col-sm-6">
-                                        <label>Last Name *</label>
-                                        <input type="text" class="form-control" required>
-                                    </div><!-- End .col-sm-6 -->
-                                </div><!-- End .row -->
-
-                                <label>Display Name *</label>
-                                <input type="text" class="form-control" required>
-                                <small class="form-text">This will be how your name will be displayed in the account section and in reviews</small>
-
-                                <label>Email address *</label>
-                                <input type="email" class="form-control" required>
-
-                                <label>Current password (leave blank to leave unchanged)</label>
-                                <input type="password" class="form-control">
-
-                                <label>New password (leave blank to leave unchanged)</label>
-                                <input type="password" class="form-control">
-
-                                <label>Confirm new password</label>
-                                <input type="password" class="form-control mb-2">
-
-                                <button type="submit" class="btn btn-outline-primary-2">
-                                    <span>SAVE CHANGES</span>
-                                    <i class="icon-long-arrow-right"></i>
-                                </button>
+                                <div class="text-start py-3 px-2">
+                                    <button type="submit" class="btn btn-primary px-4">Save</button>
+                                </div>
                             </form>
-                        </div><!-- .End .tab-pane -->
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-updatepass" role="tabpanel" aria-labelledby="tab-updatepass-link">
+                            <form method="post" action="{{ route('password.update') }}" class="row g-3">
+                                @csrf
+                                @method('put')
+                                <div class="col-12">
+                                    <label class="form-label">Current Password</label>
+                                    <small class="text-danger">
+                                        @error('current_password')
+                                            {{ $message }}
+                                        @enderror
+                                    </small>
+                                    <input id="update_password_current_password" name="current_password" type="password" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">New Password</label>
+                                    <small class="text-danger">
+                                        @error('password')
+                                            {{ $message }}
+                                        @enderror
+                                    </small>
+                                    <input id="update_password_password" name="password" type="password" class="form-control">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Password Confirmation</label>
+                                    <small class="text-danger">
+                                        @error('password_confirmation')
+                                            {{ $message }}
+                                        @enderror
+                                    </small>
+                                    <input id="update_password_password_confirmation" name="password_confirmation" type="password" class="form-control">
+                                </div>
+                                <div class="text-start py-3 px-2">
+                                    <button type="submit" class="btn btn-primary px-4">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
                 </div><!-- End .col-lg-9 -->
             </div><!-- End .row -->

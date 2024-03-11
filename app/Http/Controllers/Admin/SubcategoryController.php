@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\SubCategory;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class SubcategoryController extends Controller
@@ -15,7 +15,7 @@ class SubcategoryController extends Controller
     public function index()
     {
         return view('admin.subcategory.index', [
-            'categories' => Category::all()
+            'subcategories' => Subcategory::all()
         ]);
     }
 
@@ -39,7 +39,7 @@ class SubcategoryController extends Controller
             'category_id' => 'required'
         ]);
 
-        SubCategory::createOrUpdate($request);
+        Subcategory::createOrUpdate($request);
         return redirect()->route('sub-category.index')->with('status', 'Subcategory created successfully');
     }
 
@@ -57,7 +57,8 @@ class SubcategoryController extends Controller
     public function edit(string $id)
     {
         return view('admin.subcategory.edit', [
-            'subcategory' => SubCategory::find($id)
+            'subcategory' => SubCategory::find($id),
+            'categories' => Category::all(),
         ]);
     }
 
@@ -66,7 +67,7 @@ class SubcategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        SubCategory::createOrUpdate($request, $id);
+        Subcategory::createOrUpdate($request, $id);
         return redirect()->route('sub-category.index')->with('status', 'Subcategory updated successfully');
     }
 
@@ -75,7 +76,7 @@ class SubcategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        SubCategory::destroy($id);
+        Subcategory::destroy($id);
         return redirect()->route('sub-category.index')->with('status', 'Subcategory deleted successfully');
     }
 }

@@ -1,5 +1,9 @@
 @extends('admin.master')
 
+@section('title')
+    Category
+@endsection
+
 @section('style')
 <!-- DataTables -->
 <link rel="stylesheet" href="{{ asset('/') }}assets/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -13,7 +17,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Add New Category</h1>
+          <h1>Category List</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">

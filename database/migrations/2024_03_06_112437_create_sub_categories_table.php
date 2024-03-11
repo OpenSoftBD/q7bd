@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->string('name');
+            $table->string('topbar_heading')->nullable();
+            $table->text('topbar_description')->nullable();
+            $table->text('bottom_description')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_url')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keyword')->nullable();
+            $table->text('total_product')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

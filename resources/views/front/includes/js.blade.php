@@ -8,6 +8,7 @@
 <script src="{{ asset('/') }}assets/front/assets/js/jquery.plugin.min.js"></script>
 <script src="{{ asset('/') }}assets/front/assets/js/jquery.magnific-popup.min.js"></script>
 <script src="{{ asset('/') }}assets/front/assets/js/jquery.countdown.min.js"></script>
+<script src="{{ asset('/') }}assets/front/assets/js/bootstrap-input-spinner.js"></script>
 <!-- Main JS File -->
 <script src="{{ asset('/') }}assets/front/assets/js/main.js"></script>
 <script src="{{ asset('/') }}assets/front/assets/js/demos/demo-2.js"></script>
